@@ -30,11 +30,13 @@
 						<label>Tipo: </label>
 					</td>
 					<td>
-						<select>
-							<option value="lib">Libro</option>
-							<option value="lib_pdf">Libro PDF</option>
-							<option value="url">URL</option>
-						</select>
+						<?php if(isset($template_tipos_contenido)): ?>
+							<select>
+								<?php foreach($template_tipos_contenido as $valor => $texto ): ?>
+									<option value="<?php echo $valor; ?>"><?php echo $texto ?></option>
+								<?php endforeach; ?>
+							</select>
+						<?php endif; ?>
 					</td>
 				</tr>
 				<tr>
