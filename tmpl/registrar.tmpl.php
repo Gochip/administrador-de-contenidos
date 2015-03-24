@@ -11,10 +11,10 @@
 			<table>
 				<tr>
 					<td>
-						<label>Clave: </label>
+						<label>Fuente: </label>
 					</td>
 					<td>
-						<input type="text" id="txtClave" name="txtClave" style="width: 100%" />
+						<input type="text" id="txtClave" name="txtFuente" style="width: 100%" />
 					</td>
 				</tr>
 				<tr>
@@ -31,7 +31,7 @@
 					</td>
 					<td>
 						<?php if(isset($template_tipos_contenido)): ?>
-							<select>
+							<select name="slcTipoContenido">
 								<?php foreach($template_tipos_contenido as $valor => $texto ): ?>
 									<option value="<?php echo $valor; ?>"><?php echo $texto ?></option>
 								<?php endforeach; ?>
@@ -52,14 +52,13 @@
 						<label>Calidad</label>
 					</td>
 					<td>
-						<select>
-							<option value="exc">Excelente</option>
-							<option value="bue">Buena</option>
-							<option value="reg">Regular</option>
-							<option value="mal">Mala</option>
-							<option value="no_">No sé</option>
-							<option value="pro">Prometedor</option>
-						</select>
+					    <?php if(isset($template_calidades)): ?>
+						    <select name="slcCalidad">
+						        <?php foreach($template_calidades as $valor => $texto ): ?>
+									    <option value="<?php echo $valor; ?>"><?php echo $texto ?></option>
+							    <?php endforeach; ?>
+						    </select>
+						<?php endif; ?>
 					</td>
 				</tr>
 			</table>
