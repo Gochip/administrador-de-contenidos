@@ -7,6 +7,9 @@
 	</head>
 	<body>
 		<h1>Mis contenidos</h1>
+		<?php if(isset($template_mensaje)):?>
+		    <h3><?php echo $template_mensaje; ?></h3>
+		<?php endif; ?>
 		<form action="registrar.php" method="post" >
 			<table>
 				<tr>
@@ -14,7 +17,7 @@
 						<label>Fuente: </label>
 					</td>
 					<td>
-						<input type="text" id="txtClave" name="txtFuente" style="width: 100%" />
+						<input type="text" id="txtClave" name="txtFuente" style="width: 100%" autocomplete="off" />
 					</td>
 				</tr>
 				<tr>
@@ -22,7 +25,7 @@
 						<label>Título: </label>
 					</td>
 					<td>
-						<input type="text" id="txtTitulo" name="txtTitulo" style="width: 100%" />
+						<input type="text" id="txtTitulo" name="txtTitulo" style="width: 100%" autocomplete="off" />
 					</td>
 				</tr>
 				<tr>
@@ -31,7 +34,7 @@
 					</td>
 					<td>
 						<?php if(isset($template_tipos_contenido)): ?>
-							<select name="slcTipoContenido">
+							<select name="slcTipoMaterial">
 								<?php foreach($template_tipos_contenido as $valor => $texto ): ?>
 									<option value="<?php echo $valor; ?>"><?php echo $texto ?></option>
 								<?php endforeach; ?>
@@ -67,5 +70,7 @@
 				<input type="submit" id="btnRegistrar" name="btnRegistrar" value="Registrar" />
 			</div>
 		</form>
+		<br />
+		<a href="index.php" >Volver</a>
 	</body>
 </html>

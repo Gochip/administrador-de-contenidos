@@ -1,35 +1,48 @@
 <?php
 
-
+$conexion = mysqli_connect("localhost", "root", "", "conocimiento");
+mysqli_set_charset($conexion, 'utf8');
 if(isset($_POST["btnRegistrar"])){
     $fuente = null;
     $titulo = null;
-    $tipo_contenido = null;
+    $id_tipo_material = null;
     $descripcion = null;
-    $calidad = null;
+    $id_calidad = null;
     if(isset($_POST["txtFuente"])){
         $fuente = $_POST["txtFuente"];
     }
     if(isset($_POST["txtTitulo"])){
         $titulo = $_POST["txtTitulo"];
     }
-    if(isset($_POST["slcTipoContenido"])){
-        $tipo_contenido = $_POST["slcTipoContenido"];
+    if(isset($_POST["slcTipoMaterial"])){
+        $id_tipo_material = $_POST["slcTipoMaterial"];
     }
     if(isset($_POST["txaDescripcion"])){
         $descripcion = $_POST["txaDescripcion"];
     }
     if(isset($_POST["slcCalidad"])){
-        $calidad = $_POST["slcCalidad"];
+        $id_calidad = $_POST["slcCalidad"];
     }
     
-    if(is_null($fuente) || is_null($titulo) || is_null($tipo_contenido) || is_null($descripcion) || is_null($calidad)){
+    if(!empty($fuente) and !empty($titulo) and !empty($id_tipo_material) and !empty($descripcion) and !empty($id_calidad)){
         // INSERT....
+        $url_descripcion = "contenidos/" . $titulo . "_" . time() . ".txt";
+        $url_descripcion = str_ireplace(" ", "_", $url_descripcion);
+        $insercion = "INSERT INTO materiales (fuente, titulo, id_tipo_material, id_calidad, url_descripcion, descripcion) " . 
+        " VALUES ('$fuente', '$titulo', $id_tipo_material, $id_calidad, '$url_descripcion', '$descripcion')";
+        mysqli_query($conexion, $insercion);
+        $id = mysqli_insert_id($conexion);
+
+        $file = fopen($url_descripcion, "w");
+        fwrite($file, "Id:" . $id . PHP_EOL);
+        fwrite($file, $descripcion . PHP_EOL);
+        fclose($file);
+        $template_mensaje = "Registrado con éxito";
+    }else{
+        $template_mensaje = "Falta rellenar algún dato";
     }
 }
 
-$conexion = mysqli_connect("localhost", "root", "", "conocimiento");
-mysqli_set_charset($conexion, 'utf8');
 $resultado = mysqli_query($conexion, "SELECT * FROM tipos_materiales");
 
 $fila = array();
