@@ -1,0 +1,1 @@
+Permite guardar texto en forma masiva para luego consultarla mediante un buscador.
