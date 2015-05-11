@@ -30,12 +30,20 @@
 				</tr>
 				<tr>
 					<td>
+						<label>Autor: </label>
+					</td>
+					<td>
+						<input type="text" id="txtAutor" name="txtAutor" style="width: 100%" autocomplete="off" />
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<label>Tipo: </label>
 					</td>
 					<td>
-						<?php if(isset($template_tipos_contenido)): ?>
+						<?php if(isset($template_tipos_materiales)): ?>
 							<select name="slcTipoMaterial">
-								<?php foreach($template_tipos_contenido as $valor => $texto ): ?>
+								<?php foreach($template_tipos_materiales as $valor => $texto ): ?>
 									<option value="<?php echo $valor; ?>"><?php echo $texto ?></option>
 								<?php endforeach; ?>
 							</select>
@@ -47,7 +55,7 @@
 						<label>Descripción: </label>
 					</td>
 					<td>
-						<textarea id="txaDescripcion" name="txaDescripcion" rows="15" cols="70"> </textarea>
+						<textarea id="txaDescripcion" name="txaDescripcion" rows="15" cols="70"></textarea>
 					</td>
 				</tr>
 				<tr>

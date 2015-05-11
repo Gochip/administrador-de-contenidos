@@ -15,6 +15,7 @@ CREATE TABLE materiales(
 	id INT AUTO_INCREMENT,
 	fuente VARCHAR(256) NOT NULL,
 	titulo VARCHAR(100) NOT NULL,
+	autor VARCHAR(80) NOT NULL,
 	id_tipo_material INT NOT NULL,
 	id_calidad INT NOT NULL,
 	url_descripcion VARCHAR(128) NOT NULL,
