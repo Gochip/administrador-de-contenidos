@@ -15,6 +15,7 @@
 		    <fieldset>
 			    <input type="text" id="txtBuscar" name="txtBuscar" autocomplete="off" />
 			    <input type="submit" id="btnBuscar" name="btnBuscar" value="Buscar" />
+                            <input type="submit" id="btnBuscarTodo" name="btnBuscarTodo" value="Buscar todo" />
 		    </fieldset>
 	    </form>
 		<?php if(isset($template_materiales)):?>
