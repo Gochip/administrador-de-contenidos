@@ -1,5 +1,7 @@
 <?php
 
+require_once ('config.php');
+
 $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT, array("options" => array("min_range" => 1)));
 
 $template_mensaje = null;
@@ -9,7 +11,7 @@ if(is_null($id)){
 }else if($id == false){
     die ("No se detectó un id válido");
 }else{
-    $conexion = mysqli_connect("localhost", "root", "", "conocimiento");
+    $conexion = mysqli_connect($_SERVIDOR, $_USUARIO, $_CLAVE, $_BD);
     mysqli_set_charset($conexion, 'utf8');
     
     if(isset($_POST["btnModificar"])){

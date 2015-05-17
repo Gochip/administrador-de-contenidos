@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<meta charset="UTF-8" />
@@ -14,7 +13,7 @@
 			<table>
 				<tr>
 					<td>
-						<label>Fuente: </label>
+						<label>Fuente (*)</label>
 					</td>
 					<td>
 						<input type="text" id="txtClave" name="txtFuente" style="width: 100%" autocomplete="off" />
@@ -22,7 +21,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label>Título: </label>
+						<label>Título (*)</label>
 					</td>
 					<td>
 						<input type="text" id="txtTitulo" name="txtTitulo" style="width: 100%" autocomplete="off" />
@@ -30,7 +29,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label>Autor: </label>
+						<label>Autor</label>
 					</td>
 					<td>
 						<input type="text" id="txtAutor" name="txtAutor" style="width: 100%" autocomplete="off" />
@@ -38,7 +37,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label>Tipo: </label>
+						<label>Tipo (*)</label>
 					</td>
 					<td>
 						<?php if(isset($template_tipos_materiales)): ?>
@@ -52,7 +51,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label>Descripción: </label>
+						<label>Descripción (*)</label>
 					</td>
 					<td>
 						<textarea id="txaDescripcion" name="txaDescripcion" rows="15" cols="70"></textarea>
@@ -60,7 +59,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label>Calidad</label>
+						<label>Calidad (*)</label>
 					</td>
 					<td>
 					    <?php if(isset($template_calidades)): ?>

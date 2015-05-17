@@ -10,15 +10,15 @@
 		</style>
 	</head>
 	<body>
-		<h1>Mis conocimientos</h1>		
+		<h1>Mis conocimientos</h1>
 	    <form action="index.php" method="get">
 		    <fieldset>
-			    <input type="text" id="txtBuscar" name="txtBuscar" autocomplete="off" />
+			    <input type="text" id="txtBuscar" name="txtBuscar" autocomplete="off" value="<?php echo (isset($buscar))?$buscar:"" ?>" />
 			    <input type="submit" id="btnBuscar" name="btnBuscar" value="Buscar" />
-                            <input type="submit" id="btnBuscarTodo" name="btnBuscarTodo" value="Buscar todo" />
+                <input type="submit" id="btnBuscarTodo" name="btnBuscarTodo" value="Buscar todo" />
 		    </fieldset>
 	    </form>
-		<?php if(isset($template_materiales)):?>
+		<?php if(isset($template_materiales) && count($template_materiales) > 0):?>
 		    <table>
 		        <thead>
 		            <tr>
@@ -40,6 +40,8 @@
         		    <?php endfor; ?>
 		        </tbody>
 		    </table>
+		<?php else: ?>
+		    <h4>No se encontraron resultados</h4>
 		<?php endif; ?>
 		<div style="margin: 10px;">
 			<a href="registrar.php">Registrar</a>
