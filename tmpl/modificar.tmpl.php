@@ -18,7 +18,7 @@
 					</td>
 					<td>
 						<input type="text" id="txtClave" name="txtFuente" style="width: 100%" autocomplete="off"
-						value="<?php echo $material["fuente"]; ?>" disabled />
+						value="<?php echo $material["fuente"]; ?>" />
 					</td>
 				</tr>
 				<tr>

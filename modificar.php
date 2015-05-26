@@ -13,45 +13,41 @@ if(is_null($id)){
 }else{
     $conexion = mysqli_connect($_SERVIDOR, $_USUARIO, $_CLAVE, $_BD);
     mysqli_set_charset($conexion, 'utf8');
-    
-    if(isset($_POST["btnModificar"])){
-        if(isset($_POST["txtTitulo"])){
-            $titulo = $_POST["txtTitulo"];
-        }
-        if(isset($_POST["txtAutor"])){
-            $autor = $_POST["txtAutor"];
-        }
-        if(isset($_POST["slcTipoMaterial"])){
-            $id_tipo_material = $_POST["slcTipoMaterial"];
-        }
-        if(isset($_POST["txaDescripcion"])){
-            $descripcion = $_POST["txaDescripcion"];
-        }
-        if(isset($_POST["slcCalidad"])){
-            $id_calidad = $_POST["slcCalidad"];
-        }
-        if(isset($titulo) and isset($autor) and isset($id_tipo_material) and isset($descripcion) 
-        and isset($id_calidad)){
-            $actualizacion = "UPDATE materiales SET titulo='$titulo', autor='$autor', 
-            id_tipo_material=$id_tipo_material, descripcion='$descripcion', id_calidad=$id_calidad
-            WHERE id=$id";
 
-            $res = mysqli_query($conexion, $actualizacion);
-            if($res == false){
-                echo "Error al ejecutar la actualización";
+    if(isset($_POST["btnModificar"])){
+        $fuente = filter_input(INPUT_POST, "txtFuente");
+        $titulo = filter_input(INPUT_POST, "txtTitulo");
+        $autor = filter_input(INPUT_POST, "txtAutor");
+        $id_tipo_material = filter_input(INPUT_POST, "slcTipoMaterial");
+        $descripcion = filter_input(INPUT_POST, "txaDescripcion");
+        $id_calidad = filter_input(INPUT_POST, "slcCalidad");
+
+        if(isset($fuente) and isset($titulo) and isset($autor) and isset($id_tipo_material) and isset($descripcion) and isset($id_calidad)){
+            $actualizacion = "UPDATE materiales SET fuente=?, titulo=?, autor=?, id_tipo_material=?, descripcion=?, id_calidad=? WHERE id=?";
+
+            $sp = $conexion->prepare($actualizacion);
+            $sp->bind_param('sssisii', $fuente, $titulo, $autor, $id_tipo_material, $descripcion, $id_calidad, $id);
+            $resultado = $sp->execute();
+
+            if($resultado === false){
+                $template_mensaje = "Error en base de datos: " . $conexion->errno;
             }else{
                 $template_mensaje = "Modificado con éxito";
             }
         }
     }
     
-    $consulta = "SELECT * FROM materiales WHERE id='$id'";
+    $consulta = "SELECT * FROM materiales WHERE id=?";
     
-    $resultado = mysqli_query($conexion, $consulta);
+    $sp = $conexion->prepare($consulta);
+    $sp->bind_param('i', $id);
+    $resultado = $sp->execute();
+    
+    $resultado = $sp->get_result();
     $material = array();
-    $material = mysqli_fetch_array($resultado);
+    $material = $resultado->fetch_array();
     if(empty($material)){
-        $template_mensaje = "No existe ese id";
+        $template_mensaje = "No existe un material con ese id";
     }
 
     $resultado = mysqli_query($conexion, "SELECT * FROM tipos_materiales");
