@@ -15,6 +15,7 @@
 		    <fieldset>
 			    <input type="text" id="txtBuscar" name="txtBuscar" autocomplete="off" value="<?php echo (isset($buscar))?$buscar:"" ?>" />
 			    <input type="submit" id="btnBuscar" name="btnBuscar" value="Buscar" />
+			    <input type="submit" id="btnBuscarLibros" name="btnBuscarLibros" value="Buscar libros" />
                 <input type="submit" id="btnBuscarTodo" name="btnBuscarTodo" value="Buscar todo" />
 		    </fieldset>
 	    </form>

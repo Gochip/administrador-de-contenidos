@@ -1,5 +1,6 @@
 <?php
 
+ini_set('display_errors', '1');
 require_once ('config.php');
 
 $template_materiales = array();
@@ -29,14 +30,25 @@ $clave = $_CLAVE;
 $bd = $_BD;
 
 $buscar_todo = filter_input(INPUT_GET, "btnBuscarTodo");
+$buscar_libros = filter_input(INPUT_GET, "btnBuscarLibros");
 if(isset($buscar_todo)){
     $conexion = mysqli_connect("localhost", $usuario, $clave, $bd);
     mysqli_set_charset($conexion, 'utf8');
     $consulta = "SELECT * FROM materiales";
     $sp = $conexion->prepare($consulta);
+    $ok = $sp->execute();
+	$resultado = $sp->get_result();
+	cargar_template_materiales($resultado);
+	mysqli_close($conexion);
+}else if(isset($buscar_libros)){
+	$conexion = mysqli_connect("localhost", $usuario, $clave, $bd);
+    mysqli_set_charset($conexion, 'utf8');
+    $consulta = "SELECT * FROM materiales WHERE id_tipo_material IN (1, 2, 3, 4)";
+    $sp = $conexion->prepare($consulta);
     $sp->execute();
     $resultado = $sp->get_result();
     cargar_template_materiales($resultado);
+	mysqli_close($conexion);
 }else{
     $buscar = filter_input(INPUT_GET, "txtBuscar");
     if(isset($buscar)){
