@@ -1,6 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<!DOCTYPE html>
+<html lang="es">
 	<head>
 		<title>Base de datos de Conocimiento</title>
 		<style>
@@ -25,6 +24,7 @@
 		            <tr>
 		                <th>Id</th>
         		        <th>Fuente</th>
+                        <th></th>
         		        <th>Título</th>
         		        <th>Descripción</th>
 		            </tr>
@@ -35,6 +35,7 @@
         		            <td><a href="modificar.php?id=<?php echo $template_materiales[$i]["id"]; ?>" >
         		            <?php echo $template_materiales[$i]["id"]; ?></a></td>
         		            <td><?php echo $template_materiales[$i]["fuente"]; ?></td>
+                            <td><a href="<?php echo $template_materiales[$i]["fuente"]; ?>" target="_blank">Ir</a></td>
         		            <td><?php echo $template_materiales[$i]["titulo"]; ?></td>
         		            <td><?php echo $template_materiales[$i]["descripcion"]; ?></td>
         		        </tr>
