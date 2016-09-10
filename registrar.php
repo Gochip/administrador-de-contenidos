@@ -44,7 +44,7 @@ if(isset($btn_registrar)){
     }
 }
 
-$resultado = mysqli_query($conexion, "SELECT * FROM tipos_materiales");
+$resultado = mysqli_query($conexion, "SELECT * FROM tipos_materiales ORDER BY nombre");
 
 $fila = array();
 $template_tipos_materiales = array();

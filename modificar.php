@@ -50,7 +50,7 @@ if(is_null($id)){
         $template_mensaje = "No existe un material con ese id";
     }
 
-    $resultado = mysqli_query($conexion, "SELECT * FROM tipos_materiales");
+    $resultado = mysqli_query($conexion, "SELECT * FROM tipos_materiales ORDER BY nombre");
 
     $fila = array();
     $template_tipos_materiales = array();
