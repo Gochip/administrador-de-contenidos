@@ -27,6 +27,7 @@
                         <th></th>
         		        <th>Título</th>
         		        <th>Descripción</th>
+                        <th>Calidad</th>
 		            </tr>
 		        </thead>
 		        <tbody>
@@ -38,6 +39,7 @@
                             <td><a href="<?php echo $template_materiales[$i]["fuente"]; ?>" target="_blank">Ir</a></td>
         		            <td><?php echo $template_materiales[$i]["titulo"]; ?></td>
         		            <td><?php echo $template_materiales[$i]["descripcion"]; ?></td>
+                            <td><?php echo $template_materiales[$i]["calidad"]; ?></td>
         		        </tr>
         		    <?php endfor; ?>
 		        </tbody>

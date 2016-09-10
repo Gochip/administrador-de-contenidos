@@ -19,6 +19,7 @@ function cargar_template_materiales($materiales){
             $template_materiales[$i]["fuente"] = $fila["fuente"];
             $template_materiales[$i]["titulo"] = $fila["titulo"];
             $template_materiales[$i]["descripcion"] = nl2br($fila["descripcion"]);
+            $template_materiales[$i]["calidad"] = nl2br($fila["calidad"]);
             $i++;
         }
     }
@@ -34,7 +35,11 @@ $buscar_libros = filter_input(INPUT_GET, "btnBuscarLibros");
 if(isset($buscar_todo)){
     $conexion = mysqli_connect("localhost", $usuario, $clave, $bd);
     mysqli_set_charset($conexion, 'utf8');
-    $consulta = "SELECT * FROM materiales";
+    $consulta = <<<SQL
+        SELECT m.id AS id, m.fuente AS fuente, m.titulo AS titulo,
+        m.descripcion AS descripcion, c.nombre AS calidad
+        FROM materiales AS m INNER JOIN calidades AS c ON (m.id_calidad=c.id)
+SQL;
     $sp = $conexion->prepare($consulta);
     $ok = $sp->execute();
 	$resultado = $sp->get_result();
@@ -43,7 +48,12 @@ if(isset($buscar_todo)){
 }else if(isset($buscar_libros)){
 	$conexion = mysqli_connect("localhost", $usuario, $clave, $bd);
     mysqli_set_charset($conexion, 'utf8');
-    $consulta = "SELECT * FROM materiales WHERE id_tipo_material IN (1, 2, 3, 4)";
+    $consulta = <<<SQL
+        SELECT m.id AS id, m.fuente AS fuente, m.titulo AS titulo,
+        m.descripcion AS descripcion, c.nombre AS calidad
+        FROM materiales AS m INNER JOIN calidades AS c ON (m.id_calidad=c.id)
+        WHERE m.id_tipo_material=1
+SQL;
     $sp = $conexion->prepare($consulta);
     $sp->execute();
     $resultado = $sp->get_result();
@@ -55,7 +65,12 @@ if(isset($buscar_todo)){
         if(!empty($buscar)){
             $conexion = mysqli_connect("localhost", $usuario, $clave, $bd);
             mysqli_set_charset($conexion, 'utf8');
-            $consulta = "SELECT * FROM materiales WHERE fuente LIKE ? OR titulo LIKE ? OR descripcion LIKE ?";
+            $consulta = <<<SQL
+                SELECT m.id AS id, m.fuente AS fuente, m.titulo AS titulo,
+                m.descripcion AS descripcion, c.nombre AS calidad
+                FROM materiales AS m INNER JOIN calidades AS c ON (m.id_calidad=c.id)
+                WHERE m.fuente LIKE ? OR m.titulo LIKE ? OR m.descripcion LIKE ?
+SQL;
             $sp = $conexion->prepare($consulta);
             $patron = "%" . $buscar . "%";
             $sp->bind_param("sss", $patron, $patron, $patron);
