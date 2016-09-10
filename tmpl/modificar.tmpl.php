@@ -73,7 +73,7 @@
 					    <?php if(isset($template_calidades)): ?>
 						    <select name="slcCalidad">
 						        <?php foreach($template_calidades as $valor => $texto ): ?>
-						            <?php if($material["id_tipo_material"] == $valor):?>
+						            <?php if($material["id_calidad"] == $valor):?>
 						                <option value="<?php echo $valor; ?>" selected><?php echo $texto ?></option>
 								    <?php else: ?>
 								        <option value="<?php echo $valor; ?>"><?php echo $texto ?></option>
