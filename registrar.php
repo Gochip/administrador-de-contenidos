@@ -22,8 +22,8 @@ if(isset($btn_registrar)){
         // Insertar contenido...
         $url_descripcion = "contenidos/" . $titulo . "_" . time() . ".txt";
         $url_descripcion = str_ireplace(" ", "_", $url_descripcion);
-        $insercion = "INSERT INTO materiales (fuente, titulo, autor, id_tipo_material, id_calidad, url_descripcion, descripcion) " . 
-        " VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $insercion = "INSERT INTO materiales (fuente, titulo, autor, id_tipo_material, id_calidad, url_descripcion, descripcion, id_contenedor) " . 
+        " VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
         $sp = $conexion->prepare($insercion);
         $sp->bind_param("sssiiss", $fuente, $titulo, $autor, $id_tipo_material, $id_calidad, $url_descripcion, $descripcion);
         $resultado = $sp->execute();

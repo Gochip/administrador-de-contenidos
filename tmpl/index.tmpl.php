@@ -31,13 +31,37 @@
 		        <tbody>
 		            <?php for($i = 0; $i < count($template_materiales); $i++):?>
         		        <tr class="<?php echo strtolower($template_materiales[$i]["calidad"]); ?>">
-        		            <td><a href="modificar.php?id=<?php echo $template_materiales[$i]["id"]; ?>" >
-        		            <?php echo $template_materiales[$i]["id"]; ?></a></td>
-        		            <td><?php echo $template_materiales[$i]["fuente"]; ?></td>
-                            <td><a href="<?php echo $template_materiales[$i]["fuente"]; ?>" target="_blank">Ir</a></td>
-        		            <td><?php echo $template_materiales[$i]["titulo"]; ?></td>
-        		            <td><?php echo $template_materiales[$i]["descripcion"]; ?></td>
-                            <td><?php echo $template_materiales[$i]["calidad"]; ?></td>
+        		            <td>
+        		                <div>
+        		                    <a href="modificar.php?id=<?php echo $template_materiales[$i]["id"]; ?>" >
+        		                    <?php echo $template_materiales[$i]["id"]; ?></a>
+        		                </div>
+        		            </td>
+        		            <td>
+        		                <div>
+        		                    <?php echo $template_materiales[$i]["fuente"]; ?>
+        		                </div>
+        		            </td>
+                            <td>
+                                <div>
+                                    <a href="<?php echo $template_materiales[$i]["fuente"]; ?>" target="_blank">Ir</a>
+                                </div>
+                            </td>
+        		            <td>
+        		                <div>
+        		                    <?php echo $template_materiales[$i]["titulo"]; ?>
+        		                </div>
+        		            </td>
+        		            <td>
+        		                <div>
+        		                    <?php echo $template_materiales[$i]["descripcion"]; ?>
+        		                </div>
+        		            </td>
+                            <td>
+                                <div>
+                                    <?php echo $template_materiales[$i]["calidad"]; ?>
+                                </div>
+                            </td>
         		        </tr>
         		    <?php endfor; ?>
 		        </tbody>

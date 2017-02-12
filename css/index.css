@@ -1,6 +1,12 @@
 td{
     padding: 10px;
 }
+td div{
+    max-width: 400px;
+    max-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 input{
     padding: 5px;
 }
