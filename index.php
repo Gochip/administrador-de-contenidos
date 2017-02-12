@@ -32,6 +32,7 @@ $bd = $_BD;
 
 $buscar_todo = filter_input(INPUT_GET, "btnBuscarTodo");
 $buscar_libros = filter_input(INPUT_GET, "btnBuscarLibros");
+$buscar_no_vistos = filter_input(INPUT_GET, "btnBuscarNoVistos");
 if(isset($buscar_todo)){
     $conexion = mysqli_connect("localhost", $usuario, $clave, $bd);
     mysqli_set_charset($conexion, 'utf8');
@@ -53,6 +54,21 @@ SQL;
         m.descripcion AS descripcion, c.nombre AS calidad
         FROM materiales AS m INNER JOIN calidades AS c ON (m.id_calidad=c.id)
         WHERE m.id_tipo_material=1
+SQL;
+    $sp = $conexion->prepare($consulta);
+    $sp->execute();
+    $resultado = $sp->get_result();
+    cargar_template_materiales($resultado);
+	mysqli_close($conexion);
+}else if(isset($buscar_no_vistos)){
+    $conexion = mysqli_connect("localhost", $usuario, $clave, $bd);
+    mysqli_set_charset($conexion, 'utf8');
+    $consulta = <<<SQL
+        SELECT m.id AS id, m.fuente AS fuente, m.titulo AS titulo,
+        m.descripcion AS descripcion, c.nombre AS calidad
+        FROM materiales AS m INNER JOIN calidades AS c ON (m.id_calidad=c.id)
+        WHERE c.id=(SELECT id FROM calidades WHERE nombre='Prometedor') OR
+        c.id=(SELECT id FROM calidades WHERE nombre='Desconocida')
 SQL;
     $sp = $conexion->prepare($consulta);
     $sp->execute();

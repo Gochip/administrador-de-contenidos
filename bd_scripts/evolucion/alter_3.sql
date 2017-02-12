@@ -1,4 +1,4 @@
-UPDATE calidades SET nombre='No visto' WHERE nombre='Prometedor' AND id>0;
+UPDATE calidades SET nombre='Prometedor' WHERE nombre='No visto' AND id>0;
 
 INSERT INTO tipos_materiales(nombre) VALUES ('Curso online');
 INSERT INTO tipos_materiales(nombre) VALUES ('Herramienta web');

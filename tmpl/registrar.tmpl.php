@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Administrador de contenido</title>
+		<link href="css/general.css" type="text/css" rel="stylesheet"/>
 	</head>
 	<body>
 		<h1>Mis contenidos</h1>
