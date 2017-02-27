@@ -120,7 +120,7 @@ if(!empty($template_materiales)){
         $tmp[] = $material;
         // Fin de búsqueda de etiquetas
     }
+    $template_materiales = $tmp;
 }
-$template_materiales = $tmp;
 
 require_once ('tmpl/index.tmpl.php');
