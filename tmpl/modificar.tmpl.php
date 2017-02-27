@@ -14,7 +14,7 @@
 			<table>
 				<tr>
 					<td>
-						<label>Fuente: </label>
+						<label>Fuente</label>
 					</td>
 					<td>
 						<input type="text" id="txtClave" name="txtFuente" style="width: 100%" autocomplete="off"
@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label>Título: </label>
+						<label>Título</label>
 					</td>
 					<td>
 						<input type="text" id="txtTitulo" name="txtTitulo" style="width: 100%" autocomplete="off"
@@ -32,7 +32,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label>Autor: </label>
+						<label>Autor</label>
 					</td>
 					<td>
 						<input type="text" id="txtAutor" name="txtAutor" style="width: 100%" autocomplete="off"
@@ -41,7 +41,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label>Tipo: </label>
+						<label>Tipo</label>
 					</td>
 					<td>
 						<?php if(isset($template_tipos_materiales)): ?>
@@ -59,10 +59,19 @@
 				</tr>
 				<tr>
 					<td>
-						<label>Descripción: </label>
+						<label>Comentario</label>
 					</td>
 					<td>
 						<textarea id="txaDescripcion" name="txaDescripcion" rows="15" cols="70"><?php echo $material["descripcion"] ?></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Etiquetas</label>
+					</td>
+					<td>
+						<input type="text" id="txtEtiquetas" name="txtEtiquetas" style="width: 100%" autocomplete="off"
+						value="<?php echo $template_etiquetas ?>" />
 					</td>
 				</tr>
 				<tr>

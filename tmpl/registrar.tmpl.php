@@ -52,10 +52,18 @@
 				</tr>
 				<tr>
 					<td>
-						<label>Descripción (*)</label>
+						<label>Comentario (*)</label>
 					</td>
 					<td>
 						<textarea id="txaDescripcion" name="txaDescripcion" rows="15" cols="70"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Etiquetas (*)</label>
+					</td>
+					<td>
+						<input type="text" id="txtEtiquetas" name="txtEtiquetas" style="width: 100%" autocomplete="off" />
 					</td>
 				</tr>
 				<tr>
