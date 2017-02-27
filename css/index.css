@@ -1,6 +1,12 @@
 td{
     padding: 10px;
 }
+td .etiquetas{
+    min-width: 200px;
+}
+td .comentario{
+    max-width: 200px;
+}
 td div{
     max-width: 400px;
     max-height: 20px;

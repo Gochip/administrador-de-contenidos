@@ -98,4 +98,29 @@ SQL;
     }
 }
 
+if(!empty($template_materiales)){
+    $conexion = mysqli_connect("localhost", $usuario, $clave, $bd);
+    mysqli_set_charset($conexion, 'utf8');
+    $tmp = array();
+    foreach($template_materiales as $material){
+        // Búsqueda de etiquetas
+        $id = $material["id"];
+        $consulta = "SELECT etiqueta FROM etiquetas_x_materiales WHERE id_material=?";
+        $sp = $conexion->prepare($consulta);
+        $sp->bind_param('i', $id);
+        $sp->execute();
+        $resultado = $sp->get_result();
+        $template_etiquetas = "";
+        if(!empty($resultado)){
+            while($fila = $resultado->fetch_array()){
+                $template_etiquetas .= '[' . $fila["etiqueta"] . ']';
+            }
+        }
+        $material["etiquetas"] = $template_etiquetas;
+        $tmp[] = $material;
+        // Fin de búsqueda de etiquetas
+    }
+}
+$template_materiales = $tmp;
+
 require_once ('tmpl/index.tmpl.php');

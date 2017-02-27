@@ -80,6 +80,7 @@ if(is_null($id)){
         $template_mensaje = "No existe un material con ese id";
     }
     
+    // Búsqueda de etiquetas
     $consulta = "SELECT etiqueta FROM etiquetas_x_materiales WHERE id_material=?";
     $sp = $conexion->prepare($consulta);
     $sp->bind_param('i', $id);
@@ -91,6 +92,7 @@ if(is_null($id)){
             $template_etiquetas .= '[' . $fila["etiqueta"] . ']';
         }
     }
+    // Fin de búsqueda de etiquetas
 
     $resultado = mysqli_query($conexion, "SELECT * FROM tipos_materiales ORDER BY nombre");
 

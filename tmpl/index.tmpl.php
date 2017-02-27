@@ -24,7 +24,8 @@
         		        <th>Fuente</th>
                         <th></th>
         		        <th>Título</th>
-        		        <th>Descripción</th>
+        		        <th>Etiquetas</th>
+        		        <th>Comentario</th>
                         <th>Calidad</th>
 		            </tr>
 		        </thead>
@@ -53,7 +54,12 @@
         		                </div>
         		            </td>
         		            <td>
-        		                <div>
+        		                <div class="etiquetas">
+        		                    <?php echo $template_materiales[$i]["etiquetas"]; ?>
+        		                </div>
+        		            </td>
+        		            <td>
+        		                <div class="comentario" title="<?php echo $template_materiales[$i]["descripcion"]; ?>">
         		                    <?php echo $template_materiales[$i]["descripcion"]; ?>
         		                </div>
         		            </td>
