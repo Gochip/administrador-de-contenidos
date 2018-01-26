@@ -27,6 +27,7 @@
         		        <th>Etiquetas</th>
         		        <th>Comentario</th>
                         <th>Calidad</th>
+                        <th>Tipo</th>
 		            </tr>
 		        </thead>
 		        <tbody>
@@ -66,6 +67,11 @@
                             <td>
                                 <div>
                                     <?php echo $template_materiales[$i]["calidad"]; ?>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <?php echo $template_materiales[$i]["tipo"]; ?>
                                 </div>
                             </td>
         		        </tr>
