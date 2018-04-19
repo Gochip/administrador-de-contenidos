@@ -2,9 +2,23 @@
 <html lang="es">
 	<head>
 		<title>Base de datos de Conocimiento</title>
+		<link href="css/jquery-ui.css" rel="stylesheet">
 		<link href="css/bulma.css" type="text/css" rel="stylesheet"/>
 		<link href="css/general.css" type="text/css" rel="stylesheet"/>
 		<link href="css/index.css" type="text/css" rel="stylesheet"/>
+		<script src="js/jquery-3.3.1/jquery-3.3.1.min.js" type="text/javascript"></script>
+		<script src="js/jquery-3.3.1/jquery-ui.js"></script>
+		<script type="text/javascript">
+		    $(document).ready(function() {
+		        $("#txtBuscar").autocomplete({
+                    source: "buscar.php",
+                    minLength: 0,
+                    select: function( event, ui ) {
+                        //log( "Selected: " + ui.item.value + " aka " + ui.item.id );
+                    }
+                });
+		    });
+		</script>
 	</head>
 	<body>
 	    <div class="section">
