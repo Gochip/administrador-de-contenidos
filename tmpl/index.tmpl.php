@@ -42,7 +42,6 @@
 		                <tr>
 		                    <th>Tipo</th>
             		        <th>Fuente</th>
-                            <th></th>
             		        <th>Título</th>
             		        <th>Etiquetas</th>
             		        <th>Comentario</th>
@@ -62,14 +61,17 @@
             		            </td>
             		            <td>
             		                <div>
-            		                    <?php echo $template_materiales[$i]["fuente"]; ?>
+            		                    <?php if($template_materiales[$i]["tipo"] === "Libro" ||
+            		                        $template_materiales[$i]["tipo"] === "Artículo" ||
+            		                        $template_materiales[$i]["tipo"] === "Paper"): ?>
+                		                    <?php echo $template_materiales[$i]["fuente"]; ?>
+            		                    <?php else: ?>
+            		                        <a href="<?php echo $template_materiales[$i]["fuente"]; ?>" target="_blank">
+                		                        <?php echo $template_materiales[$i]["fuente"]; ?>
+                		                    </a>
+            		                    <?php endif; ?>
             		                </div>
             		            </td>
-                                <td>
-                                    <div>
-                                        <a href="<?php echo $template_materiales[$i]["fuente"]; ?>" target="_blank">Ir</a>
-                                    </div>
-                                </td>
             		            <td>
             		                <div>
             		                    <?php echo $template_materiales[$i]["titulo"]; ?>
