@@ -27,3 +27,6 @@ table{
 .desconocida{
     background-color: #D3D3D3;
 }
+.columna-tipo {
+    width: 80px;
+}

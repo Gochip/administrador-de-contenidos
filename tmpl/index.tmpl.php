@@ -40,23 +40,24 @@
 		        <table class="table">
 		            <thead>
 		                <tr>
-		                    <th>Id</th>
+		                    <th>Tipo</th>
             		        <th>Fuente</th>
                             <th></th>
             		        <th>Título</th>
             		        <th>Etiquetas</th>
             		        <th>Comentario</th>
                             <th>Calidad</th>
-                            <th>Tipo</th>
 		                </tr>
 		            </thead>
 		            <tbody>
 		                <?php for($i = 0; $i < count($template_materiales); $i++):?>
             		        <tr class="<?php echo strtolower($template_materiales[$i]["calidad"]); ?>">
-            		            <td>
+            		            <td class="columna-tipo">
             		                <div>
-            		                    <a href="modificar.php?id=<?php echo $template_materiales[$i]["id"]; ?>" >
-            		                    <?php echo $template_materiales[$i]["id"]; ?></a>
+                                        <a href="modificar.php?id=<?php echo $template_materiales[$i]["id"]; ?>" >
+                                            <?php echo $template_materiales[$i]["id"]; ?>
+                                            <img src="img/<?php echo $template_materiales[$i]["imagen_tipo"] ?>" width="14" title="<?php echo $template_materiales[$i]["tipo"] ?>" />
+                                        </a>
             		                </div>
             		            </td>
             		            <td>
@@ -87,11 +88,6 @@
                                 <td>
                                     <div>
                                         <?php echo $template_materiales[$i]["calidad"]; ?>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <?php echo $template_materiales[$i]["tipo"]; ?>
                                     </div>
                                 </td>
             		        </tr>

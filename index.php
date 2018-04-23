@@ -21,6 +21,7 @@ function cargar_template_materiales($materiales){
             $template_materiales[$i]["descripcion"] = nl2br($fila["descripcion"]);
             $template_materiales[$i]["calidad"] = nl2br($fila["calidad"]);
             $template_materiales[$i]["tipo"] = $fila["tipo"];
+            $template_materiales[$i]["imagen_tipo"] = $fila["imagen_tipo"];
             $i++;
         }
     }
@@ -39,7 +40,8 @@ if(isset($buscar_todo)){
     mysqli_set_charset($conexion, 'utf8');
     $consulta = <<<SQL
         SELECT m.id AS id, m.fuente AS fuente, m.titulo AS titulo,
-        m.descripcion AS descripcion, c.nombre AS calidad, tm.nombre AS tipo
+        m.descripcion AS descripcion, c.nombre AS calidad, tm.nombre AS tipo,
+        tm.imagen AS imagen_tipo
         FROM materiales AS m INNER JOIN calidades AS c ON (m.id_calidad=c.id)
         INNER JOIN tipos_materiales AS tm ON (tm.id=m.id_tipo_material)
 SQL;
@@ -53,7 +55,8 @@ SQL;
     mysqli_set_charset($conexion, 'utf8');
     $consulta = <<<SQL
         SELECT m.id AS id, m.fuente AS fuente, m.titulo AS titulo,
-        m.descripcion AS descripcion, c.nombre AS calidad, tm.nombre AS tipo
+        m.descripcion AS descripcion, c.nombre AS calidad, tm.nombre AS tipo,
+        tm.imagen AS imagen_tipo
         FROM materiales AS m INNER JOIN calidades AS c ON (m.id_calidad=c.id)
         INNER JOIN tipos_materiales AS tm ON (tm.id=m.id_tipo_material)
         WHERE m.id_tipo_material=1
@@ -68,7 +71,8 @@ SQL;
     mysqli_set_charset($conexion, 'utf8');
     $consulta = <<<SQL
         SELECT m.id AS id, m.fuente AS fuente, m.titulo AS titulo,
-        m.descripcion AS descripcion, c.nombre AS calidad, tm.nombre AS tipo
+        m.descripcion AS descripcion, c.nombre AS calidad, tm.nombre AS tipo,
+        tm.imagen AS imagen_tipo
         FROM materiales AS m INNER JOIN calidades AS c ON (m.id_calidad=c.id)
         INNER JOIN tipos_materiales AS tm ON (tm.id=m.id_tipo_material)
         WHERE c.id=(SELECT id FROM calidades WHERE nombre='Prometedor') OR
@@ -87,7 +91,8 @@ SQL;
             mysqli_set_charset($conexion, 'utf8');
             $consulta = <<<SQL
                 SELECT m.id AS id, m.fuente AS fuente, m.titulo AS titulo,
-                m.descripcion AS descripcion, c.nombre AS calidad, tm.nombre AS tipo
+                m.descripcion AS descripcion, c.nombre AS calidad, tm.nombre AS tipo,
+                tm.imagen AS imagen_tipo
                 FROM materiales AS m INNER JOIN calidades AS c ON (m.id_calidad=c.id)
                 INNER JOIN tipos_materiales AS tm ON (tm.id=m.id_tipo_material)
                 WHERE m.fuente LIKE ? OR m.titulo LIKE ? OR m.descripcion LIKE ?
