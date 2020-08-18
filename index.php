@@ -123,7 +123,7 @@ if(!empty($template_materiales)){
         $template_etiquetas = "";
         if(!empty($resultado)){
             while($fila = $resultado->fetch_array()){
-                $template_etiquetas .= '[' . $fila["etiqueta"] . ']';
+                $template_etiquetas .= '<label class="tag is-info" style="margin-right: 5px">' . $fila["etiqueta"] . '</label>';
             }
         }
         $material["etiquetas"] = $template_etiquetas;

@@ -9,7 +9,7 @@ td .comentario{
 }
 td div{
     max-width: 400px;
-    max-height: 20px;
+    max-height: 30px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
